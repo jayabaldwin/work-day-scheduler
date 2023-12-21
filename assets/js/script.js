@@ -5,7 +5,6 @@ $(document).ready(function () {
 
   // event listener for click events on the saved button
   $('.saveBtn').on('click', function(){
-    preventDefault();
     var blockText = $(this).siblings('.description').val();
     var blockTime = $(this).parent().attr('id');
     console.log(blockText, blockTime);
