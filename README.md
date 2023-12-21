@@ -53,3 +53,4 @@ The following animation displays the applications functionality:
 
 ## Acknowledgements
 - Assistance from my tutor Anastasia Warren
+- My classmate, Reid Back, helped me fix the local storage issues I was stuck on
