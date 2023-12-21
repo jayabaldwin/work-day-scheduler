@@ -13,6 +13,17 @@ $(document).ready(function () {
   });
 
 
+
+  // retrieve data saved to local storage
+  $(".time-block").each(function() {
+    var blockTime = $(this).attr('id');
+    var savedData = localStorage.getItem(blockTime);
+    // find description class within the div and insert text from variable savedData
+    $(this).find(".description").text(savedData);
+    });
+
+
+
   // set current hour using dayjs
   var currentHour = dayjs().hour()
   console.log("Hour", currentHour);
@@ -37,39 +48,9 @@ $(document).ready(function () {
       $(this).addClass('past');
       console.log("In the past");
     }
-
-
   });
 
-
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
   
-  // grab element by id and class, list all elements and give a value with .val method
-  // check in local storage if the key pairs exist localStorage.getItem and give value to text area
-  // $("#hour-5 .description")
-
-  // localStorage.getItem(blockText);
-
-  // $(window).on('load', function(){
-  //   var savedData = localStorage.getItem(blockText)
-
-
-
-  // });
-
-  // select each div element by ID and class
-  // $("#hour-9 .description").val();
-  // $("#hour-10 .description").val();
-  // $("#hour-11 .description").val();
-  // $("#hour-12 .description").val();
-  // $("#hour-13 .description").val();
-  // $("#hour-14 .description").val();
-  // $("#hour-15 .description").val();
-  // $("#hour-16 .description").val();
-  // $("#hour-17 .description").val();
-
 
   // Displays the current date in header through ID
   const currentDate = dayjs();
