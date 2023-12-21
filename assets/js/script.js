@@ -10,29 +10,31 @@ $(document).ready(function () {
     console.log(blockText, blockTime);
     // stores data of hour-id and corresponding text
     localStorage.setItem(blockTime, blockText);
-    // compare what we clicked on and grab data
   });
 
+  
 
-
+  // set current hour using dayjs
   var currentHour = dayjs().hour()
   console.log("Hour", currentHour);
 
   console.log("Timeblock", $('.time-block'));
   $('.time-block').each(function(){
+    // separate the numerical value at the end of the id i.e. "hour-10" and parse it as an integer
     var blockHour = parseInt($(this).attr('id').split('-')[1]);
     console.log("Attribute value", blockHour, blockHour === currentHour);
 
+    // compare the integer to the current time and add/remove class accordingly
     if (blockHour > currentHour) {
-      $("textarea").addClass('future');
+      $(this).addClass('future');
       console.log("In the future")
     } else if (blockHour === currentHour) {
-      $("textarea").removeClass('future');
-      $("textarea").addClass('present');
+      $(this).removeClass('future');
+      $(this).addClass('present');
       console.log("Right now!")
     } else {
-      $("textarea").removeClass('present');
-      $("textarea").addClass('past');
+      $(this).removeClass('present');
+      $(this).addClass('past');
       console.log("In the past");
     }
   });
@@ -49,7 +51,7 @@ $(document).ready(function () {
 
 
 
-  
+
 
   // Added code to display the current date and attached to header through id
   const currentDate = dayjs();
