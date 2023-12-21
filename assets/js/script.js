@@ -14,29 +14,28 @@ $(document).ready(function () {
   });
 
 
-    // TODO: Add code to apply the past, present, or future class to each time
-    // block by comparing the id to the current hour. HINTS: How can the id
-    // attribute of each time-block be used to conditionally add or remove the
-    // past, present, and future classes? How can Day.js be used to get the
-    // current hour in 24-hour time?
-
 
   var currentHour = dayjs().hour()
   console.log("Hour", currentHour);
-  var pastHour;
-  var futureHour;
 
   console.log("Timeblock", $('.time-block'));
   $('.time-block').each(function(){
-    var blockHour = parseInt($(this).attr('id').split('-')[1])
+    var blockHour = parseInt($(this).attr('id').split('-')[1]);
     console.log("Attribute value", blockHour, blockHour === currentHour);
 
-
-    // if statement compare the hours and attach corresponsing class
-    // dont forget to remove previous class when adding a new one
-   });
-
-
+    if (blockHour > currentHour) {
+      $("textarea").addClass('future');
+      console.log("In the future")
+    } else if (blockHour === currentHour) {
+      $("textarea").removeClass('future');
+      $("textarea").addClass('present');
+      console.log("Right now!")
+    } else {
+      $("textarea").removeClass('present');
+      $("textarea").addClass('past');
+      console.log("In the past");
+    }
+  });
 
 
   
@@ -49,5 +48,11 @@ $(document).ready(function () {
   // $("#hour-5 .description")
 
 
-  // TODO: Add code to display the current date in the header of the page.
+
+  
+
+  // Added code to display the current date and attached to header through id
+  const currentDate = dayjs();
+  const formattedDate = currentDate.format('MMMM D, YYYY');
+  $('#currentDay').text(formattedDate);
 });
